@@ -1,0 +1,71 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    </div>
+
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-6 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Total Documents</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ document_count }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-file fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-6 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Total Document Types</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ document_type_count }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-file-excel fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-md-5">
+        <form class="d-none d-sm-inline-block form-inline mr-auto mb-md-3 my-2 my-md-0 mw-100 col-md-9" method="POST" action="{% url 'document' %}">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="text" name="query" class="form-control" placeholder="Search for..."
+                    aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+</div>
+{% endblock %}
